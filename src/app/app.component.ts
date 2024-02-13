@@ -1,13 +1,32 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { DaysService } from './days.service';
+import { CommonModule, NgStyle } from '@angular/common';
+import { CellComponent } from "./cell/cell.component";
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { map } from 'rxjs';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.less'
+    selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.less',
+    imports: [MatButtonModule, MatTooltipModule, CommonModule, CellComponent, NgStyle]
 })
 export class AppComponent {
-  title = 'calendar-tracker';
+    calendar = this.daysService.getDays();
+    firstDay = this.daysService.getFirstDay().pipe(
+      map((days) => ({ height: (days - 1) * 14 + 'px' }))
+    );
+
+    constructor(private daysService: DaysService) {}
+
+
+    add() {
+      this.daysService.add();
+    }
+
+    substr() {
+      this.daysService.substr();
+    }
 }

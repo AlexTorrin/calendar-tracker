@@ -1,0 +1,83 @@
+
+@level-zero-color: white;
+
+@level-one-color: #EFF396;
+@level-two-color: #74E291;
+@level-three-color: #59B4C3;
+@level-four-color: #211C6A;
+@level-disabled-color: #C0C0C0;
+
+:host {
+    display: block;
+    margin: 2px;
+    width: 8px;
+    height: 8px;
+    border: 1px solid;
+    transition: background-color 1s, border-color 1s;
+    
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+::ng-deep .level-zero {
+    background-color: @level-zero-color;
+    border-color: darken(@level-zero-color, 10%);
+
+    
+    &:hover { 
+        background-color: darken(@level-zero-color, 30%);
+        border-color: darken(@level-zero-color, 40%);
+    }
+}
+
+::ng-deep .level-one {
+    background-color: @level-one-color;
+    border-color: darken(@level-one-color, 10%);
+
+    
+    &:hover { 
+        background-color: darken(@level-one-color, 30%);
+        border-color: darken(@level-one-color, 40%);
+    }
+}
+
+::ng-deep .level-two {
+    background-color: @level-two-color;
+    border-color: darken(@level-two-color, 10%);
+    
+    &:hover { 
+        background-color: darken(@level-two-color, 30%);
+        border-color: darken(@level-two-color, 40%);
+    }
+}
+
+::ng-deep .level-three {
+    background-color: @level-three-color;
+    border-color: darken(@level-three-color, 10%);
+    
+    &:hover { 
+        background-color: darken(@level-three-color, 30%);
+        border-color: darken(@level-three-color, 40%);
+    }
+}
+
+::ng-deep .level-four {
+    background-color: @level-four-color;
+    border-color: darken(@level-four-color, 10%);
+    
+    &:hover { 
+        background-color: darken(@level-four-color, 30%);
+        border-color: darken(@level-four-color, 40%);
+    }
+}
+
+::ng-deep .level-disabled {
+    background-color: @level-disabled-color;
+    border-color: darken(@level-disabled-color, 10%);
+    
+    &:hover { 
+        background-color: darken(@level-disabled-color, 30%);
+        border-color: darken(@level-disabled-color, 40%);
+    }
+}
