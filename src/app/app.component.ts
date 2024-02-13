@@ -5,6 +5,7 @@ import { CellComponent } from "./cell/cell.component";
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { map } from 'rxjs';
 import {MatButtonModule} from '@angular/material/button';
+import { Day } from './day';
 
 @Component({
     selector: 'app-root',
@@ -28,5 +29,9 @@ export class AppComponent {
 
     substr() {
       this.daysService.substr();
+    }
+
+    trackById(_: number, item: Day) {
+      return item.date.getTime() + item.weight;
     }
 }

@@ -2,7 +2,7 @@
   <div class="cells">
 	<div [ngStyle]="firstDay | async"></div>
     <app-cell
-		*ngFor="let item of calendar"
+		*ngFor="let item of calendar; trackBy: trackById"
 		[matTooltip]="item.tooltip"
 		matTooltipPosition="right"
 		[weight]="item.weight"
