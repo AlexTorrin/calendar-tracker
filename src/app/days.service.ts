@@ -22,6 +22,14 @@ export class DaysService {
 	}
 
 	add() {
+		this.weightOperation((v) => v + 1);
+	}
+
+	substr() {
+		this.weightOperation((v) => v - 1);
+	}
+
+	private weightOperation(operation: (val: number) => number) {
 		const data = JSON.parse(localStorage.getItem('data') as string) || {};
 		const date = moment();
 		const year = date.format('YYYY');
@@ -34,25 +42,8 @@ export class DaysService {
 		if (!data?.[year]?.[month]) {
 			data[year][month] = {};
 		}
-		data[year][month][day] = weight + 1;
-		localStorage.setItem('data', JSON.stringify(data));
-		this.update.next(true);
-	}
-
-	substr() {
-		const data = JSON.parse(localStorage.getItem('data') as string) || {};
-		const date = moment();
-		const year = date.format('YYYY');
-		const month = date.format('MM');
-		const day = date.format('DD');
-		const weight = data?.[year]?.[month]?.[day] || 1;
-		if (!data?.[year]) {
-			data[year] = {};
-		}
-		if (!data?.[year]?.[month]) {
-			data[year][month] = {};
-		}
-		data[year][month][day] = weight - 1;
+		const result = operation(weight) < 0 ? 0 : operation(weight);
+		data[year][month][day] = result;
 		localStorage.setItem('data', JSON.stringify(data));
 		this.update.next(true);
 	}
