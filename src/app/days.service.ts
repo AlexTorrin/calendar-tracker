@@ -75,7 +75,6 @@ export class DaysService {
 		const year = date.format('YYYY');
 		const month = date.format('MM');
 		const day = date.format('DD');
-		console.log(year, month, day)
 
 		// localStorage.setItem('data', JSON.stringify(data));
 		const data = JSON.parse(localStorage.getItem('data') as string);
