@@ -22,16 +22,17 @@ export class AppComponent {
 
     constructor(private daysService: DaysService) {}
 
-
-    add() {
-      this.daysService.add();
-    }
-
-    substr() {
-      this.daysService.substr();
-    }
-
     trackById(_: number, item: Day) {
       return item.date.getTime() + item.weight;
+    }
+
+    addOnDay(event: Event, date: Date) {
+      event.preventDefault();
+      this.daysService.add(date); 
+    }
+
+    substrOnDay(event: Event, date: Date) {
+      event.preventDefault();
+      this.daysService.substr(date);
     }
 }

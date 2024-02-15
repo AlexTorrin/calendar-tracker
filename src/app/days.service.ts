@@ -21,17 +21,17 @@ export class DaysService {
 		return this.chosenYear.pipe(map((year) => moment(`${year}0101`, 'YYYYMMDD').weekday()));
 	}
 
-	add() {
-		this.weightOperation((v) => v + 1);
+	add(d: Date = new Date()) {
+		this.weightOperation((v) => v + 1, d);
 	}
 
-	substr() {
-		this.weightOperation((v) => v - 1);
+	substr(d: Date = new Date()) {
+		this.weightOperation((v) => v - 1, d);
 	}
 
-	private weightOperation(operation: (val: number) => number) {
+	private weightOperation(operation: (val: number) => number, d: Date) {
 		const data = JSON.parse(localStorage.getItem('data') as string) || {};
-		const date = moment();
+		const date = moment(d);
 		const year = date.format('YYYY');
 		const month = date.format('MM');
 		const day = date.format('DD');

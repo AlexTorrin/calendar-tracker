@@ -7,10 +7,8 @@
 		matTooltipPosition="right"
 		[weight]="item.weight"
 		[inFuture]="!item.inPast"
+		(click)="addOnDay($event, item.date)"
+		(contextmenu)="substrOnDay($event, item.date)"
 	></app-cell>
   </div>
-
-  <button style="margin: 16px;" mat-raised-button color="accent" (click)="add()">Добавить сегодня</button>
-
-  <button style="margin: 16px;" mat-raised-button color="primary" (click)="substr()">Убавить сегодня</button>
 </ng-container>
