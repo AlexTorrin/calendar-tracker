@@ -4,7 +4,6 @@ import { CommonModule, NgStyle } from '@angular/common';
 import { CellComponent } from "./cell/cell.component";
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { map } from 'rxjs';
-import {MatButtonModule} from '@angular/material/button';
 import { Day } from './day';
 
 @Component({
@@ -12,7 +11,7 @@ import { Day } from './day';
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.less',
-    imports: [MatButtonModule, MatTooltipModule, CommonModule, CellComponent, NgStyle]
+    imports: [MatTooltipModule, CommonModule, CellComponent, NgStyle]
 })
 export class AppComponent {
     calendar = this.daysService.getDays();
